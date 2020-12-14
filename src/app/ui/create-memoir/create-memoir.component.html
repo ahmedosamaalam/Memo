@@ -1,0 +1,95 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="memoirForm" class="form-container">
+  <mat-card>
+    <mat-card-header class="header">
+      <mat-card-title>Write Memoir</mat-card-title>
+      <button type="button" matDialogClose class="close-btn" mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-sm-6">
+          <mat-form-field class="full-width">
+            <textarea
+              formControlName="note"
+              matInput
+              placeholder="Note"
+              required
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="full-width">
+            <input
+              formControlName="videoUrl"
+              matInput
+              placeholder="Video url"
+              type="url"
+              required
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Select Date</mat-label>
+            <input
+              formControlName="timeStamp"
+              matInput
+              [matDatepicker]="picker"
+              required
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row center">
+        <button type="button" mat-raised-button (click)="fileInput.click()">
+          Choose File
+        </button>
+        <input
+          hidden
+          (change)="onChange($event)"
+          #fileInput
+          type="file"
+          id="file"
+        />
+        <img
+          *ngIf="memoirForm.get('picture').value"
+          [src]="memoirForm.get('picture').value"
+          class="img"
+          alt="image"
+        />
+        <!-- <input type="file" (change)="onChange($event)" />
+        <mat-form-field>
+          <input matInput formControlName="picture" />
+        </mat-form-field> -->
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        [disabled]="memoirForm.invalid"
+        type="submit"
+        mat-raised-button
+        color="primary"
+        matDialogClose
+      >
+        Save
+      </button>
+      <button
+        [disabled]="!memoirForm.dirty"
+        type="button"
+        mat-raised-button
+        color="warn"
+        (click)="memoirForm.reset()"
+      >
+        Reset
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

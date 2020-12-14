@@ -1,0 +1,24 @@
+.full-width {
+  width: 100% !important ;
+}
+
+.mat-card {
+  box-shadow: none !important;
+}
+
+.img {
+  height: 30px;
+  width: 30px;
+  margin-left: 12px;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

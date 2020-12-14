@@ -1,0 +1,39 @@
+<button mat-raised-button (click)="addNote()">Add Note</button>
+
+<div *ngIf="memories; else loading">
+  <mat-card *ngFor="let memoir of memories | keyvalue">
+    <div class="header">
+      <span class="title">
+        {{ memoir?.key }} have {{ memoir.value?.length }} Memories
+      </span>
+      <span>
+        <button
+          [routerLink]="['/memoir', memoir?.key]"
+          routerLinkActive="router-link-active"
+          mat-button
+        >
+          View All
+        </button>
+        <button (click)="download(memoir.value)" mat-button>Download</button>
+      </span>
+    </div>
+    <div class="content">
+      <div *ngFor="let item of memoir.value">
+        <mat-card class="item-card">
+          <mat-card-content>
+            <img class="img" [src]="item?.picture" alt="note" />
+            <p class="note" *ngIf="item">
+              {{
+                item?.note?.length > 100
+                  ? (item?.note | slice: 0:100) + ".."
+                  : item?.note
+              }}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<ng-template #loading> ...loading </ng-template>

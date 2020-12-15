@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { AppService } from 'src/app/app.service';
 import { Memoir } from 'src/app/models/memoir';
 
@@ -11,7 +12,11 @@ import { Memoir } from 'src/app/models/memoir';
 export class CreateMemoirComponent implements OnInit {
   memoirForm: any;
   img: any;
-  constructor(private fb: FormBuilder, private appService: AppService) {}
+  constructor(
+    private fb: FormBuilder,
+    private appService: AppService,
+    public dialogRef: MatDialogRef<CreateMemoirComponent>
+  ) {}
 
   ngOnInit(): void {
     this.registerForm();
@@ -21,7 +26,7 @@ export class CreateMemoirComponent implements OnInit {
       note: ['', Validators['required']],
       timeStamp: ['', Validators['required']],
       picture: ['', Validators['required']],
-      videoUrl: ['', Validators['required']],
+      embedUrl: ['', Validators['required']],
     });
   }
 
@@ -38,7 +43,7 @@ export class CreateMemoirComponent implements OnInit {
       ),
     };
     this.appService.createNote(payload).subscribe((res) => {
-      console.log(res);
+      this.dialogRef.close(res);
     });
   }
 }

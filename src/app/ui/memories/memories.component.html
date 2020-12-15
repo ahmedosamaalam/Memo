@@ -1,4 +1,8 @@
-<button mat-raised-button (click)="addNote()">Add Note</button>
+<mat-toolbar color="accent" class="header">
+  <span>Memo App</span>
+
+  <button mat-raised-button (click)="addNote()">Add Note</button>
+</mat-toolbar>
 
 <div *ngIf="memories; else loading">
   <mat-card *ngFor="let memoir of memories | keyvalue">

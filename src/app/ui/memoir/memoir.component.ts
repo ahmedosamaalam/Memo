@@ -8,7 +8,7 @@ import { AppService } from 'src/app/app.service';
   styleUrls: ['./memoir.component.scss'],
 })
 export class MemoirComponent implements OnInit {
-  // memories: Array<any>;
+  memories: Array<any> = [];
   constructor(private route: ActivatedRoute, private app: AppService) {}
 
   ngOnInit(): void {
@@ -16,6 +16,7 @@ export class MemoirComponent implements OnInit {
       console.log(params);
       this.app.getMemoirByDate(params.date).subscribe((res) => {
         console.log(res);
+        this.memories = res;
       });
     });
   }

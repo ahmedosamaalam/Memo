@@ -18,9 +18,12 @@ export class MemoriesComponent implements OnInit {
   memories: GroupByData = {};
   constructor(public dialog: MatDialog, private app: AppService) {}
   ngOnInit(): void {
+    this.getMemories();
+  }
+
+  getMemories() {
     this.app.getMemories().subscribe((res) => {
       this.memories = this.groupBy(res, 'timeStamp');
-      console.log(this.memories);
     });
   }
 
@@ -29,10 +32,13 @@ export class MemoriesComponent implements OnInit {
       width: '40%',
       autoFocus: false,
     });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`); // Pizza!
-    // });
-    // dialogRef.close('Pizza!');
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+      if (result) {
+        // Refresh data
+        this.getMemories();
+      }
+    });
   }
 
   groupBy(items: Array<any>, key: string): GroupByData {

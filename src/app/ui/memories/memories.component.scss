@@ -2,14 +2,17 @@
   width: 100%;
   height: 300px;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .header {
-  background: #e9e9e9;
+  background: #ecd03b;
+  // background: #e9e9e9;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0px 15px;
+  border-radius: 5px;
 }
 
 .title {

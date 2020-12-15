@@ -1,1 +1,28 @@
-<p>memoir works!</p>
+<div class="">
+  <div *ngFor="let item of memories" style="margin-bottom: 60px">
+    <mat-card>
+      <mat-card-content>
+        <img
+          class="img"
+          style="height: 300px; border-radius: 10px"
+          [src]="item?.picture"
+          alt="note"
+        />
+        <div style="padding: 10px 0">
+          <h2 style="padding: 10px; margin: 0">NOTE</h2>
+          <p class="note" *ngIf="item">
+            {{ item?.note }}
+          </p>
+        </div>
+        <div *ngIf="item?.embedUrl" style="text-align: center">
+          <iframe
+            width="420"
+            height="315"
+            [src]="item?.embedUrl | safe: 'resourceUrl'"
+          >
+          </iframe>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

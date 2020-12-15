@@ -1,7 +1,7 @@
 export interface Memoir {
   id?: string;
   note: string;
-  timestamp: string;
+  timeStamp: string;
   picture?: any;
-  videoUrl?: string;
+  embedUrl?: string;
 }

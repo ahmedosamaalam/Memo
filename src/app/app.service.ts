@@ -19,13 +19,6 @@ export class AppService {
   }
 
   getMemoirByDate(date: any) {
-    debugger;
-    this.memories.forEach((element) => {
-      debugger;
-      if (element.timeStamp === date) {
-        console.log('12');
-      }
-    });
     const f = this.memories.filter((item) => item.timeStamp == date);
     return of(f);
   }

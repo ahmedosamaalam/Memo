@@ -50,6 +50,7 @@ import { CommonModule } from '@angular/common';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
+import { SafePipe } from './safe.pipe';
 
 const MODULES = [
   A11yModule,
@@ -106,8 +107,8 @@ const MODULES = [
 ];
 
 @NgModule({
-  imports: MODULES,
-  declarations: [],
-  exports: [...MODULES],
+  imports: [...MODULES],
+  declarations: [SafePipe],
+  exports: [...MODULES, SafePipe],
 })
 export class CommonModules {}

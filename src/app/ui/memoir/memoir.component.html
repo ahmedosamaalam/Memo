@@ -1,4 +1,4 @@
-<div class="">
+<div *ngIf="memories; else dataNotFound">
   <div *ngFor="let item of memories" style="margin-bottom: 60px">
     <mat-card>
       <mat-card-content>
@@ -26,3 +26,6 @@
     </mat-card>
   </div>
 </div>
+<ng-template #dataNotFound>
+  <div class="dnf">Data not found.</div>
+</ng-template>

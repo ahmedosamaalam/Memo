@@ -26,7 +26,7 @@ export class CreateMemoirComponent implements OnInit {
       note: ['', Validators['required']],
       timeStamp: ['', Validators['required']],
       picture: ['', Validators['required']],
-      embedUrl: ['', Validators['required']],
+      embedUrl: [''],
     });
   }
 

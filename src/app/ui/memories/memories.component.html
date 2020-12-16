@@ -1,10 +1,12 @@
 <mat-toolbar color="accent" class="header">
   <span>Memo App</span>
 
-  <button mat-raised-button (click)="addNote()">Add Note</button>
+  <button mat-button (click)="addNote()">
+    <mat-icon>add</mat-icon>
+    Add Memo
+  </button>
 </mat-toolbar>
-
-<div *ngIf="memories; else loading">
+<div *ngIf="(memories | json) != '{}'; else dataNotFound">
   <mat-card *ngFor="let memoir of memories | keyvalue">
     <div class="header">
       <span class="title">
@@ -40,4 +42,8 @@
   </mat-card>
 </div>
 
-<ng-template #loading> ...loading </ng-template>
+<ng-template #dataNotFound>
+  <div class="dnf">
+    <h2>Data not found.</h2>
+  </div>
+</ng-template>
